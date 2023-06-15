@@ -1,6 +1,32 @@
-<form action="/">
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="請輸入網址" name="originalUrl" required>
-    <button class="btn btn-primary" type="submit">送出</button>
+<div class="container">
+  {{#if shortenUrl}}
+  <div>
+    <form action="/" method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" name="originalURL" placeholder="{{ originalUrl }}" disabled>
+        <button class="btn btn-primary" type="submit" disabled>送出</button>
+      </div>
+    </form>
   </div>
-</form>
+
+  <div>
+    <span>Success! Please use this link:</span>
+    <div>
+      <h5>{{ shortenUrl }}</h5>
+      <button id="copyURL" class="btn btn-outline-secondary btn-sm" type="submit">
+        <i class="fa-solid fa-copy"></i>
+      </button>      
+    </div>
+    <div>
+      <a class="btn btn-outline-secondary btn-sm" href="/" role="button">back</a>
+    </div>
+  </div>
+  {{else}}
+  <form action="/" method="post">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="請輸入網址" name="originalUrl" required>
+      <button class="btn btn-primary" type="submit">送出</button>
+    </div>
+  </form>
+  {{/if}}
+</div>
