@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+
+.cover-img {
+  text-align: center;
+}
+
+h3 {
+  font-size: 48px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+span {
+  margin-bottom: 10px;
+}
+
+.results-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}

@@ -9,13 +9,22 @@
     </form>
   </div>
 
-  <div>
+  <div class="results">
     <span>Success! Please use this link:</span>
-    <div>
-      <h5>{{ shortenUrl }}</h5>
-      <button id="copyURL" class="btn btn-outline-secondary btn-sm" type="submit">
+    <div class="results-info">
+      <h5 id="copyURL" >{{ shortenUrl }}</h5>
+      <button class="btn btn-outline-secondary btn-sm ms-3" type="submit" onclick="copyUrl()">
         <i class="fa-solid fa-copy"></i>
-      </button>      
+      </button> 
+
+      <script>
+        function copyUrl() {
+          const copyText = document.getElementById("copyURL")
+          navigator.clipboard.writeText(copyText.innerText)
+          alert("已複製: " + copyText.innerText)
+        }
+      </script>
+
     </div>
     <div>
       <a class="btn btn-outline-secondary btn-sm" href="/" role="button">back</a>
@@ -24,7 +33,7 @@
   {{else}}
   <form action="/" method="post">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="請輸入網址" name="originalUrl" required>
+      <input type="url" class="form-control" placeholder="請輸入網址" name="originalUrl" required>
       <button class="btn btn-primary" type="submit">送出</button>
     </div>
   </form>
