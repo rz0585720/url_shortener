@@ -14,8 +14,7 @@ router.post('/', (req, res) => {
 	const originalUrl = req.body.originalUrl
 	// 若未輸入網址，則顯示錯誤訊息
 	if (!req.body.originalUrl) {
-		const error = '請輸入網址'
-		return res.render('index', { error })
+		return res.redirect('/')
 	}
 
 	Url.findOne({ originalUrl })
@@ -42,7 +41,12 @@ router.get('/:shortenUrl', (req, res) => {
 	Url.findOne({ shortenUrl })
 		.lean()
 		.then(url => {
-			res.redirect(url.originalUrl)
+			if (url) {
+				res.redirect(url.originalUrl)
+			} else {
+				const error = '找不到該網址，請重新輸入'
+				res.render('index', { error })
+			}
 		})
 		.catch(error => console.log(error))
 })
