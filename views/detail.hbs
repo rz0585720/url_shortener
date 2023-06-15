@@ -1,0 +1,32 @@
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {{#each urls}}
+  <div class="col">
+    <div class="card h-100 ms-5 me-5">
+      <div class="card-body" id="card-body">
+        <h5 id="{{ _id }}" class="card-title">{{ shortenUrl }}</h5>
+        <span class="card-text">{{ originalUrl }}</span>
+      </div>
+      <button class="btn btn-outline-secondary btn-sm" type="submit" onclick="copyUrl()">
+        <i class="fa-solid fa-copy"></i>
+      </button>
+    </div>
+  </div>
+  {{/each}}
+  <script>
+    function copyUrl () {
+      if (event.target.tagName === "I") {
+        const id = event.target.parentElement.parentElement.children[0].children[0].getAttribute("id")
+        const copyElement = document.getElementById(id)
+        const copyText = copyElement.textContent
+        navigator.clipboard.writeText(copyText)
+        alert("已複製: " + copyText)
+      } else {
+        const id = event.target.parentElement.children[0].children[0].getAttribute("id")
+        const copyElement = document.getElementById(id)
+        const copyText = copyElement.textContent
+        navigator.clipboard.writeText(copyText)
+        alert("已複製: " + copyText)
+      }
+    }
+  </script>
+</div>
